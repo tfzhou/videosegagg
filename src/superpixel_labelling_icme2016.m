@@ -48,20 +48,9 @@ aggUnaries(:, 2) = 1 - aggUnaries(:, 1);
 % Appearance Model with spatial prior
 accumProbMaps = cell(nframe, 1);
 for i = 1 : nframe
-    %     accumProbMap = true(size(regProbMaps{1}));
-    
-    %     obj_sz = 0;
-    %     for j = 1 : numel(segments); obj_sz = obj_sz + sum(segments{j}{i}(:)); end
-    %     obj_sz = obj_sz ./ numel(segments);
-    
-    %     for j = 1 : numel(regProbMaps)
-    %       if sum(segments{j}{i}(:)) > 0.5 * obj_sz & sum(segments{j}{i}(:)) < 2.0 * obj_sz
-    %         accumProbMap = accumProbMap .* exp(regProbMaps{i});
-    %       end
-    %     end
-    
-    accumProbMaps{i} = exp(regProbMaps{i});
-    accumProbMaps{i} = accumProbMaps{i} ./ max(accumProbMaps{i}(:));
+    map = regProbMaps{i};
+    map(map < 0) = 0;
+    accumProbMaps{i} = map;
 end
 
 output = cell(nframe, 1);
