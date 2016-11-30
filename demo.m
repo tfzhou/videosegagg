@@ -4,14 +4,13 @@ close all;
 addpath('src');
 
 %% sequence
-seq = 'girl';
-ext = 'bmp';
+seq = 'birdfall';
+ext = 'png';
 img_path = 'data/';
 seg_path = 'data/segments/';
 gt_path = 'data/groundtruth/';
 
-segmentor_set = {'CVPR13_DAGSeg', 'CVPR14_SeamSeg', 'CVPR15_JOTSeg', 'CVPR15_SaliencySeg'...
-    'ICCV11_KeySeg', 'ICCV13_FastSeg'};
+segmentor_set = {'CVPR13_DAGSeg', 'CVPR14_SeamSeg', 'CVPR15_JOTSeg', 'ICCV11_KeySeg', 'ICCV13_FastSeg'};
 
 %% prepare data
 script_prepare_data

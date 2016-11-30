@@ -12,17 +12,6 @@ for i = 1 : numel(file_list)
     frames{i} = F;
 end
 
-%% load groundtruth
-gt_file_list           = get_file_list([gt_path seq], ext);
-ts                  = cell2struct(num2cell([1:length(gt_file_list)]),'t',1);
-gt_file_list           = cell2struct([struct2cell(gt_file_list); struct2cell(ts')],...
-    [fieldnames(gt_file_list); fieldnames(ts)], 1);
-
-groundtruth = cell(numel(gt_file_list), 1);
-for i = 1 : length(gt_file_list)
-    groundtruth{i} = logical(imread(gt_file_list(i).name));
-end
-
 %% load segments
 n_segmentor = length(segmentor_set);
 segments = cell(n_segmentor, 1);
